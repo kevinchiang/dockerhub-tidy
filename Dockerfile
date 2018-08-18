@@ -12,6 +12,8 @@ RUN apt-get update && \
         r-base-dev \
         libcurl4-openssl-dev && \
     R -e 'install.packages(c("dplyr", "tidyr"), repos = c("https://cran.rstudio.com"))' && \
+    apt-get remove -y r-base-dev libcurl4-openssl-dev gnupg2 dirmngr && \
+    apt -y autoremove && \
     apt-get clean && \
     rm -rf \ 
         /var/lib/apt/lists/* \
