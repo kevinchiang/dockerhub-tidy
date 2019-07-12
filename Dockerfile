@@ -8,11 +8,11 @@ RUN apt-get update && \
     echo "deb http://cran.cnr.berkeley.edu/bin/linux/debian/ stretch-cran35/" >> /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y \
-        r-base \
-        r-base-dev \
+        r-base-core=3.5.3-1~stretchcran.0 \
+        build-essential \
         libcurl4-openssl-dev && \
     R -e 'install.packages(c("dplyr", "tidyr"), repos = c("https://cran.rstudio.com"))' && \
-    apt-get remove -y r-base-dev libcurl4-openssl-dev gnupg2 dirmngr && \
+    apt-get remove -y build-essential libcurl4-openssl-dev gnupg2 dirmngr && \
     apt -y autoremove && \
     apt-get clean && \
     rm -rf \ 
